@@ -11,6 +11,9 @@
     "stylus": "*",
     "js-yaml": "*",
     "xml2js": "*",
-    "supervisor": "*"
+    "supervisor": "*",
+    "coffee-script": "*",
+    "connect-coffee-script": "*",
+    "connect-assets": "*"
   }
 }

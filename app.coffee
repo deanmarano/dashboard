@@ -2,6 +2,8 @@ express = require 'express'
 routes = require './routes'
 http = require 'http'
 path = require 'path'
+cs = require 'coffee-script'
+coffeescript = require 'connect-coffee-script'
 
 app = express()
 
@@ -17,22 +19,33 @@ app.configure ->
   app.use(express.session())
   app.use(app.router)
   app.use(require('stylus').middleware(__dirname + '/public'))
+  app.use coffeescript
+    src: __dirname + '/app/assets/coffee'
+    dest: __dirname + '/public'
   app.use(express.static(path.join(__dirname, 'public')))
 
 app.configure 'development', ->
   app.use(express.errorHandler())
 
 
-app.get('/', routes.index)
+#app.get('/', routes.index)
+app.get('/', routes.index2)
 
-app.get '/goodreads', (req, res)->
+app.get '/data/goodreads', (req, res)->
   settings = require './app/settings'
   goodreads = require('./lib/goodreads') settings.goodreads
-  goodreads.getUser 6540398, (a)->
-    console.log 'render called!'
-    res.set('Content-Type', 'application/json')
-    console.log a.id()
-    res.send(a.userData)
+  shelfId = 21538062
+  goodreads.getUser 6540398, (user)->
+    #res.set('Content-Type', 'application/json')
+    #res.send(user.userData)
+    #goodreads.getShelvesForUser user, (userWithShelves)->
+      #res.set('Content-Type', 'application/json')
+      #res.send
+        #book: userWithShelves.book(0)
+        #user: user
+    goodreads.getShelfForUser user, 'read', (userWithShelves)->
+      res.set('Content-Type', 'application/json')
+      res.send userWithShelves
 
 app.listen(3000)
 console.log('listening on port 3000')

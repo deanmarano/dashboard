@@ -1,5 +1,7 @@
 goodreads:
   host:  http://www.goodreads.com
   userShowPath: user/show/:id.json
+  reviewListPath: review/list/:id.xml
+  shelfShowPath: review/list/:id.xml?
   key: aFENHgoD9RuwBZw32U4g
   secret: Wiiy39MhgPk6O607QMc33g6M9421Ff8Naw9xglqyow
