@@ -21,7 +21,7 @@ app.configure ->
   app.use(require('stylus').middleware(__dirname + '/public'))
   app.use coffeescript
     src: __dirname + '/app/assets/coffee'
-    dest: __dirname + '/public'
+    dest: __dirname + '/public/js'
   app.use(express.static(path.join(__dirname, 'public')))
 
 app.configure 'development', ->
@@ -30,6 +30,8 @@ app.configure 'development', ->
 
 #app.get('/', routes.index)
 app.get('/', routes.index2)
+app.get('/code', routes.index2)
+app.get('/books', routes.index2)
 
 app.get '/data/goodreads', (req, res)->
   settings = require './app/settings'
