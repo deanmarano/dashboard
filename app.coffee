@@ -2,8 +2,8 @@ express = require 'express'
 routes = require './routes'
 http = require 'http'
 path = require 'path'
-cs = require 'coffee-script'
 coffeescript = require 'connect-coffee-script'
+stylus = require 'stylus'
 
 app = express()
 
@@ -19,8 +19,7 @@ app.configure ->
   app.use(express.session())
   app.use(app.router)
 
-  app.use require('stylus').middleware(
-    force: true
+  app.use stylus.middleware(
     src: __dirname + '/app/assets'
     dest: __dirname + '/public'
   )
