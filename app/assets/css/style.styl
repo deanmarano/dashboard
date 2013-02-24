@@ -11,6 +11,7 @@ page_width = 750px
 html
   height: 100%
   width: 100%
+  background-color: #fefefa
 
 body
   height: 100%
@@ -22,27 +23,43 @@ body
   margin: auto
 
 #moreAbout
-  text-align: center
+  tr
+    td
+      vertical-align: middle
+    td:first-child
+      width: 300px
+      text-align: right
+    td:last-child
+      text-align: left
   font-family: "Times New Roman"
   font-size: 24px
-  line-height: 50px
   span
     vertical-align: top
-  img
-    height: 50px
-    padding: 0 20px
+  tr
+    td:nth-child(2)
+      img
+        height: 50px
+        padding: 10px 30px
+        vertical-align: middle
+        &.starter-league
+          padding: 0
+        &:hover
+          cursor: pointer
+          -webkit-transition:background-image 5s linear
+          background-image: -webkit-radial-gradient(circle, #b1b5be, #fff 40px)
+
   li
     width: page_width
     height: 75px
 
   .coffeescript-logo
     position: relative
-    top: -8px
+    top: -3px
     height: 32px
     padding: 0 5px
   .ruby-logo
     position: relative
-    top: -10px
+    top: -5px
     height: 32px
     padding: 0 5px
   li
@@ -61,6 +78,8 @@ a
   height: 50px
 
 #intro
+  position: relative
+  left: 34px
   span
     font-size: 48px
     line-height: 100px
@@ -70,7 +89,6 @@ a
     width: 100px
     height: 100px
     margin: 0 10px
-
 
 
 header
@@ -88,7 +106,9 @@ header
   #bottom
     height: 30px
     margin-top: 30px
-    /*background-image: -webkit-linear-gradient(bottom, cs_gray 37%, cs_lighter_gray 69%)*/
+
+.hide
+  display: none
 
 .clearfix:after
   content: "."
