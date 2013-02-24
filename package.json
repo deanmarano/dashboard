@@ -12,6 +12,7 @@
     "js-yaml": "*",
     "xml2js": "*",
     "supervisor": "*",
+    "snockets": "*",
     "coffee-script": "*",
     "connect-coffee-script": "*",
     "connect-assets": "*"
