@@ -18,15 +18,20 @@ app.configure ->
   app.use(express.cookieParser('your secret here'))
   app.use(express.session())
   app.use(app.router)
+
   app.use require('stylus').middleware(
     force: true
     src: __dirname + '/app/assets'
     dest: __dirname + '/public'
   )
+
   app.use coffeescript
     src: __dirname + '/app/assets/coffee'
     dest: __dirname + '/public/js'
+    prefix: '/js'
+
   app.use(express.static(path.join(__dirname, 'public')))
+  app.use('/images', express.static(path.join(__dirname, 'app/assets/images')))
 
 app.configure 'development', ->
   app.use(express.errorHandler())
