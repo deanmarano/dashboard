@@ -1,49 +1,87 @@
 extends layout
 
 block content
+  link(rel='stylesheet', href='/css/test.css')
   #intro
     span Hi. I'm Dean.
     img(src='images/face.png', class='face')
     span Sometimes I smile.
 
-  ul#moreAbout
-    li
-      .right
-        img(src='images/icons/github.png')
-        span I write code. Lots of it. I speak in
-        img(src='images/icons/coffeescript.png').coffeescript-logo
-        span and
-        img(src='images/icons/ruby.png').ruby-logo
-        span Ruby.
+  #moreAbout
+    .section.code
+      .background-white
+        ul.inline
+          li.left
+          li.center
+            img(src='images/icons/github.png')
+          li.right
+            span I write code. Lots of it. I speak in
+            img(src='images/icons/coffeescript.png').coffeescript-logo
+            span and
+            img(src='images/icons/ruby.png').ruby-logo
+            span Ruby.
+      .more
+        img(class="background", src="http://farm8.staticflickr.com/7096/7090273507_293daf55c0_b.jpg")
+    .section.music
+      .background-white
+        ul.inline
+          li.left
+            span I'm always listening to music.
+          li.center
+            img(src='images/icons/lastfm.png')
+          li.right
+      .more
+        ul.inline.content
+          li.left
+            Most Recent Songs
+            ul
+              li Menahan Street Band – Tired of Fighting
+              li Parliament – Do That Stuff
+              li Gil Scott-Heron – The Bottle
+        img(class="background", src="http://www.worshipmatters.com/wp-content/uploads/2010/06/desktop-wallpaper-s-miscellaneous-gibson-les-paul-studio-electric-guitar.jpeg")
 
-      .clearfix
-    li
-      #music.left
-        span I'm always listening to music.
-        img(src='images/icons/lastfm.png')
-      .clearfix
-    li
-      #books.right
-        img(src='images/icons/goodreads.png')
-        span I read all sorts of books.
-      .clearfix
-    li
-      #twitter.left
-        span I talk about programming.
-        img(src='images/icons/twitter.png')
-      .clearfix
-    li
-      #facebook.right
-        img(src='images/icons/facebook.png')
-        span I make jokes with my friends.
-      .clearfix
-    li
-      #starter-league.left
-        span I help people learn to code.
-        img(src='images/icons/starter-league.png')
-      .clearfix
-    li
-      #email.right
-        img(src='images/icons/gmail.png')
-        span I'm usually pretty good about email.
-      .clearfix
+    .section.books
+      .background-white
+        ul.inline
+          li.left
+          li.center
+            img(src='images/icons/goodreads.png')
+          li.right
+            span I read all sorts of books.
+      .more
+        img(class="background", src="http://images.wisegeek.com/antique-books-at-a-library.jpg")
+
+    .section.twitter
+      .background-white
+        ul.inline
+          li.left
+            span I talk about programming.
+          li.center
+            img(src='images/icons/twitter.png')
+          li.right
+      .more
+        img(class="background", src='images/twitter-background.jpeg')
+    .section.facebook
+      .background-white
+        ul.inline
+          li.left
+          li.center
+            img(src='images/icons/facebook.png')
+          li.right
+            span I make jokes with my friends.
+    .section.starter-league
+      .background-white
+        ul.inline
+          li.left
+            span I help people learn to code.
+          li.center
+            img(src='images/icons/starter-league.png', class='starter-league')
+          li.right
+    .section.email
+      .background-white
+        ul.inline
+          li.left
+          li.center
+            img(src='images/icons/gmail.png')
+          li.right
+            span I'm pretty good at email.

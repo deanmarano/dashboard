@@ -4,15 +4,15 @@ Snockets = require 'snockets'
 # GET home page.
 #
 
-scriptsMap = ->
+scriptsMap = (manifest)->
   snockets = new Snockets()
-  snockets.scan './app/assets/coffee/manifest.coffee', async: false, (err, depGraph) ->
+  snockets.scan manifest, async: false, (err, depGraph) ->
     console.log err if err
     #console.log Object.keys(depGraph.map)
     Object.keys(depGraph.map)
 
-scripts = ->
-  scriptList = Object.keys(scriptsMap().map)
+scripts = (manifest)->
+  scriptList = Object.keys(scriptsMap(manifest).map)
   scriptList = scriptList.map (path)->
     path = path.replace('app/assets/coffee', 'js')
     path = path.replace('.coffee', '.js')
@@ -21,8 +21,9 @@ scripts = ->
 exports.index = (req, res)->
   res.render 'index',
     title: "Dean's Site"
+    scripts: scripts('./app/assets/coffee/test.coffee')
 
 exports.index2 = (req, res)->
   res.render 'index2',
     title: "Dean's Site"
-    scripts: scripts()
+    scripts: scripts('./app/assets/coffee/manifest.coffee')

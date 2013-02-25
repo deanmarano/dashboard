@@ -35,7 +35,7 @@ app.configure ->
 app.configure 'development', ->
   app.use(express.errorHandler())
 
-#app.get('/', routes.index)
+app.get('/test', routes.index)
 app.get('/', routes.index2)
 app.get('/code', routes.index2)
 app.get('/books', routes.index2)

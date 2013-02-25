@@ -3,12 +3,10 @@ html
   head
     title= title
     link(rel='stylesheet', href='/css/reset.css')
-    link(rel='stylesheet', href='/css/style.css')
     - for script in scripts
       script(src=script)
   body
     include shared/header
-    #content
-      block content
+    block content
     .clearfix
     include shared/footer
