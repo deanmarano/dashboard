@@ -4,19 +4,36 @@
 
 SectionView = Backbone.View.extend
   initialize: ->
-    console.log @$el
+    @setupParallax()
+    @updateBackgroundTop()
+
   events:
     'click .center img': 'toggleMore'
 
   toggleMore: ->
-    @$('.more').slideToggle('slow')
+    $more = @$('.more')
+    if $more.is(':visible')
+      @$('.more').slideUp('slow')
+    else
+      if $('.more:visible').length > 0
+        $('.more:visible').slideUp('slow')
+        setTimeout((=> $more.slideDown('slow')), 600)
+      else
+        $more.slideDown('slow')
+
+
+  updateBackgroundTop: ->
+    $background = @$('.more img')
+    offset = parseInt($background.data('offset'), 10) || 0
+    newTop = ($(window).scrollTop() / 2.0) + offset + 'px'
+    $background.css('top', newTop)
+
+  setupParallax: ->
+    $(window).scroll => @updateBackgroundTop()
 
 
 $ ->
   $('.section').each (index, el)->
+    console.log el
     new SectionView
       el: el
-  $window = $(window)
-  $window.scroll ->
-    newTop = ($window.scrollTop() / 2.5) + 200 + 'px'
-    $('.more img').css('top', newTop)

@@ -19,10 +19,9 @@ app.configure ->
   app.use(express.session())
   app.use(app.router)
 
-  app.use stylus.middleware(
+  app.use stylus.middleware
     src: __dirname + '/app/assets'
     dest: __dirname + '/public'
-  )
 
   app.use coffeescript
     src: __dirname + '/app/assets/coffee'
@@ -35,8 +34,8 @@ app.configure ->
 app.configure 'development', ->
   app.use(express.errorHandler())
 
-app.get('/test', routes.index)
-app.get('/', routes.index2)
+app.get('/test', routes.index2)
+app.get('/', routes.index)
 app.get('/code', routes.index2)
 app.get('/books', routes.index2)
 
