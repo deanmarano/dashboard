@@ -55,5 +55,13 @@ app.get '/data/goodreads', (req, res)->
       res.set('Content-Type', 'application/json')
       res.send userWithShelves
 
+app.get '/data/lastfm', (req, res)->
+  settings = require './app/settings'
+  console.log settings.lastfm
+  lastfm = require('./lib/lastfm') settings.lastfm
+  lastfm.getRecentTracksForUser 'il1019', (userWithShelves)->
+    res.set('Content-Type', 'application/json')
+    res.send userWithShelves
+
 app.listen(3000)
 console.log('listening on port 3000')

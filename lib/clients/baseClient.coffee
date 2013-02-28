@@ -30,6 +30,10 @@ class BaseClient
             callback
               code: res.statusCode
               body: parsedXml
+        else if headers.contentType == 'application/json'
+          callback
+            code: res.statusCode
+            body: JSON.parse(output)
         else
           callback
             code: res.statusCode
