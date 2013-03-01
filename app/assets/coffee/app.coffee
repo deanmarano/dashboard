@@ -4,8 +4,9 @@ window.App =
       return section if section.name() == id
 
   setup: ->
-    App.router = new App.Router()
     @sections = $('.section').map (index, el)->
       new App.SectionView
         el: el
+
+    App.router = new App.Router()
     Backbone.history.start(pushState: false)

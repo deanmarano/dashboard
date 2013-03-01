@@ -22,7 +22,14 @@ App.Router = Backbone.Router.extend
 
   music: ->
     console.log 'router: music'
-    App.getSection('music').showMore(delay: true)
+    section = App.getSection('music')
+    section.spin()
+    $.ajax
+      method: 'get'
+      url: '/data/lastfm'
+      success: (data) ->
+        section.here(data.body.recenttracks.track)
+        section.showMore(delay: true)
 
   twitter: ->
     console.log 'router: twitter'
