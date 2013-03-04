@@ -1,4 +1,3 @@
-querystring = require 'querystring'
 baseClient = require './clients/baseClient'
 
 class GoodreadsUser
@@ -36,43 +35,43 @@ class Goodreads
   constructor: (@settings)->
 
   getUser: (userId, onResult)->
-    query = querystring.stringify
+    params =
       key: @settings.key
       id: userId
 
-    path = "#{@settings.userShowPath.replace(':id', userId)}?#{query}"
+    path = @settings.userShowPath.replace(':id', userId)
     url = "#{@settings.host}/#{path}"
 
-    client = new baseClient(url)
+    client = new baseClient(url, params)
     client.get (response)=>
       new GoodreadsUser response.body, (user)->
         onResult(user)
 
   getShelvesForUser: (user, onResult)->
-    query = querystring.stringify
+    params =
       key: @settings.key
       v: 2
 
-    path = "#{@settings.reviewListPath.replace(':id', user.id())}?#{query}"
+    path = @settings.reviewListPath.replace(':id', user.id())
     url = "#{@settings.host}/#{path}"
 
-    client = new baseClient(url)
+    client = new baseClient(url, params)
     client.get (response)=>
       user.addShelves(response.body)
       onResult(user)
 
   getShelfForUser: (user, shelfName, onResult)->
-    query = querystring.stringify
+    params =
       key: @settings.key
       v: 2
       shelf: shelfName
       sort: 'date_added'
       order: 'd'
 
-    path = "#{@settings.reviewListPath.replace(':id', user.id())}?#{query}"
+    path = @settings.reviewListPath.replace(':id', user.id())
     url = "#{@settings.host}/#{path}"
 
-    client = new baseClient(url)
+    client = new baseClient(url, params)
     client.get (response)=>
       user.addShelf(response.body)
       onResult(user)

@@ -1,9 +1,13 @@
 http = require 'http'
 https = require 'https'
+querystring = require 'querystring'
 xml2js = require 'xml2js'
 
 class BaseClient
   constructor: (@url, params = {})->
+    if params?
+      query = querystring.stringify params
+      @url += "?" + query
 
   parseHeaders: (res)->
     contentType = res.headers['content-type']
