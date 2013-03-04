@@ -5,8 +5,18 @@ window.App =
 
   setup: ->
     @sections = $('.section').map (index, el)->
-      new App.SectionView
-        el: el
+      if el.id == 'music'
+        new App.MusicView
+          el: el
+      else if el.id == 'books'
+        new App.BooksView
+          el: el
+      else if el.id == 'twitter'
+        new App.TwitterView
+          el: el
+      else
+        new App.SectionView
+          el: el
 
     App.router = new App.Router()
     Backbone.history.start(pushState: false)

@@ -63,5 +63,12 @@ app.get '/data/lastfm', (req, res)->
     res.set('Content-Type', 'application/json')
     res.send userWithShelves
 
+app.get '/data/twitter', (req, res)->
+  settings = require './app/settings'
+  lastfm = require('./lib/twitter') settings.twitter
+  lastfm.getRecentTweetsForUser 'pleiadeez', (tweetResponse)->
+    res.set('Content-Type', 'application/json')
+    res.send tweetResponse.body
+
 app.listen(3000)
 console.log('listening on port 3000')

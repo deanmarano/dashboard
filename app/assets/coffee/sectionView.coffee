@@ -25,8 +25,6 @@ App.SectionView = Backbone.View.extend
     @spinner = setInterval(
       =>
         window.x = window.x + 10
-        console.log 'hello'
-        console.log @$('.center img')
         value = "rotateY(#{window.x}deg)"
         @$('.center img').css('-webkit-transform': value)
         @$('.center img').css('color': "green")
@@ -54,12 +52,3 @@ App.SectionView = Backbone.View.extend
 
   setupParallax: ->
     $(window).scroll => @updateBackgroundTop()
-
-  here: (tracks) ->
-    html = "<ul>"
-    for track in tracks
-      html = html + "<li>" + @formatTrack(track) + "</li>"
-    @$('.more ul.content ul').html(html + "</ul>")
-
-  formatTrack: (track) ->
-    track.name + ' - ' + track.artist['#text']
