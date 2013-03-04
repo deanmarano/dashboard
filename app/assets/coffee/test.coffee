@@ -3,6 +3,9 @@
 #= require ../../../public/lib/backbone
 #= require app
 #= require sectionView
+#= require musicView
+#= require booksView
+#= require twitterView
 #= require router
 
 $ ->

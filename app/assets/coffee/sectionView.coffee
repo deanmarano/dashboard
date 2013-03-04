@@ -16,8 +16,24 @@ App.SectionView = Backbone.View.extend
         @showMore(delay: true)
       else
         @showMore()
+
   name: ->
     @el.id
+
+  spin: ->
+    window.x = 0
+    @spinner = setInterval(
+      =>
+        window.x = window.x + 10
+        value = "rotateY(#{window.x}deg)"
+        @$('.center img').css('-webkit-transform': value)
+        @$('.center img').css('color': "green")
+    , 60)
+
+
+  stopSpin: ->
+    clearInterval(@spinner)
+    @$('.center img').css('-webkit-transform': '')
 
   showMore: (options = {})->
     if options.delay
@@ -26,6 +42,7 @@ App.SectionView = Backbone.View.extend
       console.log 'showing more'
       App.router.navigate @name(), trigger: false
       @$more.slideDown('slow')
+      @stopSpin()
 
   updateBackgroundTop: ->
     $background = @$('.more img')
