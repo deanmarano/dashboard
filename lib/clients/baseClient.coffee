@@ -1,4 +1,5 @@
 http = require 'http'
+https = require 'https'
 xml2js = require 'xml2js'
 
 class BaseClient
@@ -15,7 +16,8 @@ class BaseClient
   get: (callback)->
     output = ''
     client = @
-    request = http.get @url, (res)=>
+    protocol = if @url.match /^https:\/\// then https else http
+    request = protocol.get @url, (res)=>
       console.log("URL: #{@url}")
       console.log("Response Code: #{res.statusCode}")
       headers = @parseHeaders(res)
@@ -24,7 +26,6 @@ class BaseClient
       res.on 'data', (chunk)->
         output += chunk
       res.on 'end', ->
-        #console.log("Response Body: #{output}")
         if headers.contentType == 'application/xml'
           client.parseXml output, (parsedXml)->
             callback
