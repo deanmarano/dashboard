@@ -39,7 +39,6 @@ App.SectionView = Backbone.View.extend
     if options.delay
         setTimeout((=> @showMore()), 600)
     else
-      console.log 'showing more'
       App.router.navigate @name(), trigger: false
       @$more.slideDown('slow')
       @stopSpin()

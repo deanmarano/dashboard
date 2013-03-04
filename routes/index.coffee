@@ -8,7 +8,6 @@ scriptsMap = (manifest)->
   snockets = new Snockets()
   snockets.scan manifest, async: false, (err, depGraph) ->
     console.log err if err
-    #console.log Object.keys(depGraph.map)
     Object.keys(depGraph.map)
 
 scripts = (manifest)->
