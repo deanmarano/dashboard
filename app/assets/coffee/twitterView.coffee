@@ -4,13 +4,10 @@ App.TwitterView = App.SectionView.extend
     for tweet in tweets
       html = html + "<li>" + @formatTweet(tweet) + "</li>"
     @$('.more .content').html(html + "</ul>")
+    @loaded = true
 
   formatTweet: (tweet) ->
     tweet.text + ' at ' + tweet.created_at
-
-  expand: ->
-    @spin()
-    @getData()
 
   getData: ->
     $.ajax

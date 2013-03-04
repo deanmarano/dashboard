@@ -4,13 +4,10 @@ App.MusicView = App.SectionView.extend
     for track in tracks
       html = html + "<li>" + @formatTrack(track) + "</li>"
     @$('.more ul.content ul').html(html + "</ul>")
+    @loaded = true
 
   formatTrack: (track) ->
     track.name + ' - ' + track.artist['#text']
-
-  expand: ->
-    @spin()
-    @getData()
 
   getData: ->
     $.ajax

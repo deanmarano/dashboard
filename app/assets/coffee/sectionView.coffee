@@ -45,7 +45,11 @@ App.SectionView = Backbone.View.extend
       @stopSpin()
 
   expand: (options = {}) ->
-    @showMore(options)
+    @spin()
+    if @loaded? || !@getData?
+      @showMore(options)
+    else
+      @getData()
 
   updateBackgroundTop: ->
     $background = @$('.more img')

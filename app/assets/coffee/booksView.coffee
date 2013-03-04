@@ -4,15 +4,12 @@ App.BooksView = App.SectionView.extend
     for review in reviews
       html = html + "<li>" + @formatReview(review) + "</li>"
     @$('.more .content').html(html + "</ul>")
+    @loaded = true
 
   formatReview: (review) ->
     title = review.book[0].title[0]
     author = review.book[0].authors[0].author[0].name[0]
     "#{title} by #{author}"
-
-  expand: ->
-    @spin()
-    @getData()
 
   getData: ->
     $.ajax
