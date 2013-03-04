@@ -13,9 +13,9 @@ App.SectionView = Backbone.View.extend
     else
       if $('.more:visible').length > 0
         $('.more:visible').slideUp('slow')
-        @showMore(delay: true)
+        @expand(delay: true)
       else
-        @showMore()
+        @expand()
 
   name: ->
     @el.id
@@ -43,6 +43,9 @@ App.SectionView = Backbone.View.extend
       App.router.navigate @name(), trigger: false
       @$more.slideDown('slow')
       @stopSpin()
+
+  expand: (options = {}) ->
+    @showMore(options)
 
   updateBackgroundTop: ->
     $background = @$('.more img')
