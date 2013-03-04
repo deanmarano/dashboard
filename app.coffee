@@ -49,9 +49,9 @@ app.get '/data/goodreads', (req, res)->
 
 app.get '/data/lastfm', (req, res)->
   lastfm = require('./lib/lastfm') settings.lastfm
-  lastfm.getRecentTracksForUser 'il1019', (userWithShelves)->
+  lastfm.getRecentTracksForUser 'il1019', (trackListResponse)->
     res.set('Content-Type', 'application/json')
-    res.send userWithShelves
+    res.send trackListResponse.body
 
 app.get '/data/twitter', (req, res)->
   lastfm = require('./lib/twitter') settings.twitter

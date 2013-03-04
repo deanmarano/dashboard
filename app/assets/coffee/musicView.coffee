@@ -14,5 +14,5 @@ App.MusicView = App.SectionView.extend
       method: 'get'
       url: '/data/lastfm'
       success: (data) =>
-        @populateView(data.body.recenttracks.track)
+        @populateView(data.recenttracks.track)
         @showMore()
