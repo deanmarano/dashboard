@@ -2,6 +2,7 @@ http = require 'http'
 https = require 'https'
 querystring = require 'querystring'
 xml2js = require 'xml2js'
+fs = require 'fs'
 
 class BaseClient
   constructor: (@url, params = {})->
@@ -9,7 +10,7 @@ class BaseClient
       query = querystring.stringify params
       @url += "?" + query
 
-  parseHeaders: (res)->
+  parseHeaders: (res) ->
     contentType = res.headers['content-type']
     headerData = contentType.split(';')
     {
@@ -17,12 +18,30 @@ class BaseClient
       encoding: headerData[1].replace('charset=', '').trim()
     }
 
+
+
+  log: (url, response)->
+    url = url.replace(/\//g, '_')
+    console.log "the url is #{url}"
+    fs.writeFile "fixtures/#{url}", JSON.stringify(response), (err) ->
+      if err
+        console.log(err)
+      else
+        console.log("The file was saved!")
+
   get: (callback)->
+    if true
+      fs.readFile "fixtures/#{@url.replace(/\//g, '_')}", (err, data) ->
+        callback(JSON.parse(data))
+      return
+
     output = ''
     client = @
     protocol = if @url.match /^https:\/\// then https else http
     request = protocol.get @url, (res)=>
-      console.log("URL: #{@url}")
+      log = @log
+      url = @url
+      console.log("URL: #{url}")
       console.log("Response Code: #{res.statusCode}")
       headers = @parseHeaders(res)
       console.log headers
@@ -32,17 +51,23 @@ class BaseClient
       res.on 'end', ->
         if headers.contentType == 'application/xml'
           client.parseXml output, (parsedXml)->
-            callback
+            response =
               code: res.statusCode
               body: parsedXml
+            log(url, response)
+            callback(response)
         else if headers.contentType == 'application/json'
-          callback
+          response =
             code: res.statusCode
             body: JSON.parse(output)
+          log(url, response)
+          callback(response)
         else
-          callback
+          response =
             code: res.statusCode
-            body: output
+            body: JSON.parse(output)
+          log(url, response)
+          callback(response)
 
     request.on 'error', (e)->
       callback

@@ -6,3 +6,5 @@
 - [ ] A tag color
 - [ ] Tag a new pictures
 - [ ] Figure out a starter league picture
+- [ ] Set up memcached
+- [ ] Minimize amount of data sent to client (format things before sending)

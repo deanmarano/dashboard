@@ -2,7 +2,7 @@ App.TwitterView = App.SectionView.extend
   template: """
     <li>
       <div class="tweet-content">{{tweet}}</div>
-      <div class="tweet-when">at {{time}}</div>
+      <div class="tweet-when">{{time}}</div>
     </li>
   """
 
