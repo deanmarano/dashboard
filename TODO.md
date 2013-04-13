@@ -1,0 +1,8 @@
+- [ ] Github Client and UI
+- [ ] Format Tweets to have user links, hashtag links, and link links
+- [ ] Facebook Client and UI
+- [ ] Starter League Content
+- [ ] Refactor CSS/HTML
+- [ ] A tag color
+- [ ] Tag a new pictures
+- [ ] Figure out a starter league picture
