@@ -105,21 +105,51 @@ header
     height: 30px
     margin-top: 30px
 
-.music
-  .more
-    h3
-      font-size: 36px
+.more
+  h3
+    font-size: 36px
+  ul
+    list-style-type: disc
+  li.right
+    margin-left: 420px
+  li.left, li.right
+    font-size: 18px
+    text-align: left
+    margin-top: 30px
+    border-radius: 20px
+    padding: 10px
+    background-color: #d2a05b
+    color: black
+    opacity: 0.8
     ul
-      list-style-type: disc
-    li.left
-      font-size: 18px
-      text-align: left
-      margin-top: 30px
-      border-radius: 20px
-      padding: 10px
-      background-color: #a19e5c
-      color: black
-      opacity: 0.7
+      li
+        display: block
+        width: 330px
+
+.ellipsis-overflow
+  text-overflow: ellipsis
+  white-space: nowrap
+  overflow: hidden
+
+.music .more
+  .song-title
+    font-size: 20px
+    width: 300px
+  .song-artist
+    font-size: 17px
+    padding-bottom: 10px
+    padding-left: 15px
+
+.books .more
+  .book-title
+    font-size: 20px
+    width: 300px
+  .book-author
+    font-size: 17px
+    padding-bottom: 10px
+    padding-left: 15px
+
+
 .hide
   display: none
 .more

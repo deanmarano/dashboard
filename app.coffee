@@ -54,8 +54,8 @@ app.get '/data/lastfm', (req, res)->
     res.send trackListResponse.body
 
 app.get '/data/twitter', (req, res)->
-  lastfm = require('./lib/twitter') settings.twitter
-  lastfm.getRecentTweetsForUser 'pleiadeez', (tweetResponse)->
+  twitterClient = require('./lib/twitter') settings.twitter
+  twitterClient.getRecentTweetsForUser 'pleiadeez', (tweetResponse)->
     res.set('Content-Type', 'application/json')
     res.send tweetResponse.body
 

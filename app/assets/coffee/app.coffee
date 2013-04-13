@@ -18,5 +18,8 @@ window.App =
         new App.SectionView
           el: el
 
+    _.templateSettings =
+      interpolate : /\{\{(.+?)\}\}/g
+
     App.router = new App.Router()
     Backbone.history.start(pushState: false)

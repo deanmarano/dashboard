@@ -1,13 +1,19 @@
 App.MusicView = App.SectionView.extend
-  populateView: (tracks) ->
-    html = "<ul>"
-    for track in tracks
-      html = html + "<li>" + @formatTrack(track) + "</li>"
-    @$('.more ul.content ul').html(html + "</ul>")
-    @loaded = true
+  template: """
+    <li>
+      <div class="song-title ellipsis-overflow">{{title}}</div>
+      <div class="song-artist">by {{artist}}</div>
+    </li>
+  """
 
-  formatTrack: (track) ->
-    track.name + ' - ' + track.artist['#text']
+  populateView: (tracks) ->
+    html = ''
+    for track in tracks.slice(0, 8)
+      html = html + _.template @template,
+        title: track.name
+        artist: track.artist['#text']
+    @$('.more ul.content ul').html(html)
+    @loaded = true
 
   getData: ->
     $.ajax
