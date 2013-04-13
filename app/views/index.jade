@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  link(rel='stylesheet', href='/css/test.css')
+  link(rel='stylesheet', href='/css/style.css')
   .background-white
     #intro
       span Hi. I'm Dean.
@@ -22,6 +22,10 @@ block content
             img(src='images/icons/ruby.png').ruby-logo
             span Ruby.
       .more
+        ul.inline.content
+          li.right
+            h3 I'm Hacking On
+            ul
         img(class="background", src="images/code.png", data-offset=100)
     #music.section.music
       .background-white
@@ -61,8 +65,11 @@ block content
             img(src='images/icons/twitter.png')
           li.right
       .more
-        .content
-        img(class="background", src='images/twitter-background.jpeg', data-offset=330)
+        ul.inline.content
+          li.left
+            h3 What I'm Tweeting
+            ul
+        img(class="background", src='images/twitter-background.jpeg', data-offset=280)
     #facebook.section.facebook
       .background-white
         ul.inline

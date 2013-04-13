@@ -14,7 +14,7 @@ App.Router = Backbone.Router.extend
 
   code: ->
     console.log 'router: code'
-    App.getSection('code').showMore(delay: true)
+    App.getSection('code').expand()
 
   books: ->
     console.log 'router: books'

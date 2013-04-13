@@ -34,7 +34,6 @@ app.configure ->
 app.configure 'development', ->
   app.use(express.errorHandler())
 
-app.get('/test', routes.index2)
 app.get('/', routes.index)
 
 settings = require './app/settings'
@@ -58,6 +57,12 @@ app.get '/data/twitter', (req, res)->
   twitterClient.getRecentTweetsForUser 'pleiadeez', (tweetResponse)->
     res.set('Content-Type', 'application/json')
     res.send tweetResponse.body
+
+app.get '/data/github', (req, res)->
+  githubClient = require('./lib/github') settings.github
+  githubClient.getRecentEventsForUser 'pleiadeez', (githubResponse)->
+    res.set('Content-Type', 'application/json')
+    res.send githubResponse.body
 
 app.listen(app.get('port'))
 console.log("listening on port #{app.get('port')}")

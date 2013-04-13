@@ -1,10 +1,13 @@
-# Dependencies
 #= require ../../../public/lib/jquery.min
 #= require ../../../public/lib/underscore
 #= require ../../../public/lib/backbone
-#
-#= require main
-#= require_tree views/
+#= require app
+#= require sectionView
+#= require musicView
+#= require booksView
+#= require twitterView
+#= require githubView
+#= require router
 
 $ ->
-  App.start()
+  App.setup()

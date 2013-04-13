@@ -1,4 +1,4 @@
-App.TwitterView = App.SectionView.extend
+App.GithubView = App.SectionView.extend
   template: """
     <li>
       <div class="tweet-content">{{tweet}}</div>
@@ -48,7 +48,7 @@ App.TwitterView = App.SectionView.extend
   getData: ->
     $.ajax
       method: 'get'
-      url: '/data/twitter'
+      url: '/data/github'
       success: (data) =>
         @populateView(data.slice(0,4))
         @showMore()

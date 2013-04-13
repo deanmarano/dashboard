@@ -1,9 +1,5 @@
 Snockets = require 'snockets'
 
-#
-# GET home page.
-#
-
 scriptsMap = (manifest)->
   snockets = new Snockets()
   snockets.scan manifest, async: false, (err, depGraph) ->
@@ -19,10 +15,5 @@ scripts = (manifest)->
 
 exports.index = (req, res)->
   res.render 'index',
-    title: "Dean's Site"
-    scripts: scripts('./app/assets/coffee/test.coffee')
-
-exports.index2 = (req, res)->
-  res.render 'index2',
     title: "Dean's Site"
     scripts: scripts('./app/assets/coffee/manifest.coffee')
