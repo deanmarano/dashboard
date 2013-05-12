@@ -38,31 +38,13 @@ app.get('/', routes.index)
 
 settings = require './app/settings'
 
-app.get '/data/goodreads', (req, res)->
-  goodreads = require('./lib/goodreads') settings.goodreads
-  shelfId = 21538062
-  goodreads.getUser 6540398, (user)->
-    goodreads.getShelfForUser user, 'read', (userWithShelves)->
-      res.set('Content-Type', 'application/json')
-      res.send userWithShelves
+app.get '/data/goodreads', routes.goodreads
 
-app.get '/data/lastfm', (req, res)->
-  lastfm = require('./lib/lastfm') settings.lastfm
-  lastfm.getRecentTracksForUser 'il1019', (trackListResponse)->
-    res.set('Content-Type', 'application/json')
-    res.send trackListResponse.body
+app.get '/data/lastfm', routes.lastfm
 
-app.get '/data/twitter', (req, res)->
-  twitterClient = require('./lib/twitter') settings.twitter
-  twitterClient.getRecentTweetsForUser 'pleiadeez', (tweetResponse)->
-    res.set('Content-Type', 'application/json')
-    res.send tweetResponse.body
+app.get '/data/twitter', routes.twitter
 
-app.get '/data/github', (req, res)->
-  githubClient = require('./lib/github') settings.github
-  githubClient.getRecentEventsForUser 'pleiadeez', (githubResponse)->
-    res.set('Content-Type', 'application/json')
-    res.send githubResponse.body
+app.get '/data/github', routes.github
 
 app.listen(app.get('port'))
 console.log("listening on port #{app.get('port')}")

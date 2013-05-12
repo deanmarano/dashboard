@@ -1,6 +1,10 @@
-- [ ] Github Client and UI
-- [ ] Format Tweets to have user links, hashtag links, and link links
-- [ ] Facebook Client and UI
+- [x] Format Tweets to have user links
+- [x] Format Tweets to have link links
+- [ ] Format Tweets to have hashtag links
+- [ ] Github Client
+- [ ] Github UI
+- [ ] Facebook Client
+- [ ] Facebook UI
 - [ ] Starter League Content
 - [ ] Refactor CSS/HTML
 - [ ] A tag color

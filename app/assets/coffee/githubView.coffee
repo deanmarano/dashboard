@@ -34,16 +34,15 @@ App.GithubView = App.SectionView.extend
   populateView: (tweets) ->
     html = ''
     for tweet in tweets
-      date = new Date(tweet.created_at.replace(/^\w+ (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/, "$1 $2 $4 $3 UTC"))
-      dateToPrint = "#{@day[date.getDay()]}, #{@month[date.getMonth()]} #{date.getDate()} at #{(date.getHours() + 11) % 12 + 1 }:#{date.getMinutes()}#{if date.getHours() < 12 then 'AM' else 'PM'}"
       html = html + _.template @template,
         tweet: tweet.text
-        time: dateToPrint
+        time: @formatDate(tweet.created_at)
     @$('.more .content ul').html(html)
     @loaded = true
 
-  formatTweet: (tweet) ->
-    tweet.text + ' at ' + tweet.created_at
+  formatDate: (twitterDate) ->
+    date = new Date(twitterDate.replace(/^\w+ (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/, "$1 $2 $4 $3 UTC"))
+    dateToPrint = "#{@day[date.getDay()]}, #{@month[date.getMonth()]} #{date.getDate()} at #{(date.getHours() + 11) % 12 + 1 }:#{date.getMinutes()}#{if date.getHours() < 12 then 'AM' else 'PM'}"
 
   getData: ->
     $.ajax
