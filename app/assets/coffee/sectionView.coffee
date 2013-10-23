@@ -27,7 +27,6 @@ App.SectionView = Backbone.View.extend
         window.x = window.x + 10
         value = "rotateY(#{window.x}deg)"
         @$('.center img').css('-webkit-transform': value)
-        @$('.center img').css('color': "green")
     , 60)
 
 

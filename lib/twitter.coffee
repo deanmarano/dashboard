@@ -4,7 +4,9 @@ class Twitter
   constructor: (@settings) ->
 
   formatTweets: (responseBody) ->
-    responseBody
+    responseBody.map (tweet) =>
+      tweet: @formatTweet(tweet)
+      time: @formatDate(tweet.created_at)
 
   formatTweet: (tweet) ->
     tweetHTML = tweet.text
@@ -14,6 +16,10 @@ class Twitter
       tweetHTML = tweetHTML.replace(url.url, "<a href='#{url.expanded_url}'>#{url.expanded_url}</a>")
     tweetHTML
 
+  formatDate: (twitterDate) ->
+    date = new Date(twitterDate.replace(/^\w+ (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/, "$1 $2 $4 $3 UTC"))
+    ampm = if date.getHours() < 12 then 'AM' else 'PM'
+    dateToPrint = "#{@day[date.getDay()]}, #{@month[date.getMonth()]} #{date.getDate()} at #{(date.getHours() + 11) % 12 + 1 }:#{date.getMinutes()} #{ampm}"
 
   getRecentTweetsForUser: (user, onResult) ->
     params =
@@ -29,5 +35,30 @@ class Twitter
       if response.code == 200
         response.body = @formatTweets(response.body)
       onResult(response)
+
+  day: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ]
+
+  month: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
 
 module.exports = (settings)-> new Twitter(settings)

@@ -18,8 +18,6 @@ class BaseClient
       encoding: headerData[1].replace('charset=', '').trim()
     }
 
-
-
   log: (url, response)->
     url = url.replace(/\//g, '_')
     console.log "the url is #{url}"
@@ -30,7 +28,7 @@ class BaseClient
         console.log("The file was saved!")
 
   get: (callback)->
-    if false
+    if true
       fs.readFile "fixtures/#{@url.replace(/\//g, '_')}", (err, data) ->
         callback(JSON.parse(data))
       return
