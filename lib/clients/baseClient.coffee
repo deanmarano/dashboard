@@ -30,7 +30,7 @@ class BaseClient
         console.log("The file was saved!")
 
   get: (callback)->
-    if true
+    if false
       fs.readFile "fixtures/#{@url.replace(/\//g, '_')}", (err, data) ->
         callback(JSON.parse(data))
       return

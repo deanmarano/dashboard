@@ -15,9 +15,9 @@ scriptsMap = (manifest)->
 scripts = (manifest)->
   scriptList = Object.keys(scriptsMap(manifest).map)
   scriptList = scriptList.map (path)->
-    path = path.replace('app/assets/coffee', 'js')
-    path = path.replace('.coffee', '.js')
-    path = path.replace('public/', '')
+    path.replace('app/assets/coffee', 'js')
+      .replace('.coffee', '.js')
+      .replace('public/', '')
 
 exports.index = (req, res)->
   res.render 'index',

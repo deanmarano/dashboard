@@ -9,76 +9,11 @@ block content
       span Sometimes I smile.
 
   #moreAbout
-    #code.section.code
-      .background-white
-        ul.inline
-          li.left
-          li.center
-            img(src='images/icons/github.png')
-          li.right
-            span I write code. Lots of it. I speak in
-            img(src='images/icons/coffeescript.png').coffeescript-logo
-            span and
-            img(src='images/icons/ruby.png').ruby-logo
-            span Ruby.
-      .more
-        ul.inline.content
-          li.right
-            h3 I'm Hacking On
-            ul
-        img(class="background", src="images/code.png", data-offset=100)
-    #music.section.music
-      .background-white
-        ul.inline
-          li.left
-            span I'm always listening to music.
-          li.center
-            img(src='images/icons/lastfm.png')
-          li.right
-      .more
-        ul.inline.content
-          li.left
-            h3 I'm Listening To
-            ul
-            span See more music I like on 
-              a(href='http://last.fm/user/il1019') Last.FM
-              | .
-        img(class="background", src="images/cds.png", data-offset=120)
-    #books.section.books
-      .background-white
-        ul.inline
-          li.left
-          li.center
-            img(src='images/icons/goodreads.png')
-          li.right
-            span I read all sorts of books.
-      .more
-        ul.inline.content
-          li.right
-            h3 I've Recently Read
-            ul
-            span Check out my reading lists on 
-              a(href='http://www.goodreads.com/user/show/6540398-dean') Goodreads
-              | .
-        img(class="background", src="images/books.png", data-offset=200)
+    include sections/code
+    include sections/music
+    include sections/books
+    include sections/twitter
 
-    #twitter.section.twitter
-      .background-white
-        ul.inline
-          li.left
-            span I talk about programming.
-          li.center
-            img(src='images/icons/twitter.png')
-          li.right
-      .more
-        ul.inline.content
-          li.left
-            h3 What I'm Tweeting
-            ul
-            span Follow me on 
-              a(href='https://twitter.com/pleiadeez') Twitter
-              | .
-        img(class="background", src='images/twitter-background.jpeg', data-offset=200)
     #facebook.section.facebook
       .background-white
         ul.inline

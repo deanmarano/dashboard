@@ -18,7 +18,8 @@ App.TwitterView = App.SectionView.extend
 
   formatDate: (twitterDate) ->
     date = new Date(twitterDate.replace(/^\w+ (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/, "$1 $2 $4 $3 UTC"))
-    dateToPrint = "#{@day[date.getDay()]}, #{@month[date.getMonth()]} #{date.getDate()} at #{(date.getHours() + 11) % 12 + 1 }:#{date.getMinutes()}#{if date.getHours() < 12 then 'AM' else 'PM'}"
+    ampm = if date.getHours() < 12 then 'AM' else 'PM'
+    dateToPrint = "#{@day[date.getDay()]}, #{@month[date.getMonth()]} #{date.getDate()} at #{(date.getHours() + 11) % 12 + 1 }:#{date.getMinutes()} #{ampm}"
 
   formatTweet: (tweet) ->
     tweetHTML = tweet.text
@@ -60,4 +61,3 @@ App.TwitterView = App.SectionView.extend
     'November',
     'December'
   ]
-

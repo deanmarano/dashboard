@@ -36,8 +36,6 @@ app.configure 'development', ->
 
 app.get('/', routes.index)
 
-settings = require './app/settings'
-
 app.get '/data/goodreads', routes.goodreads
 
 app.get '/data/lastfm', routes.lastfm
